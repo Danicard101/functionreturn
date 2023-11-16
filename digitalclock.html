@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital clock</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .clock {
+      background: linear-gradient(180deg, #0000ffd2, #ff0000);
+      max-width: 500px;
+      width: 100%;
+      min-height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .time {
+      text-align: center;
+      width: 80%;
+      font-size: 4em;
+      color: #fff;
+    }
+  </style>
+  <body>
+    <div class="clock">
+      <p class="time"></p>
+    </div>
+    <script>
+      let mite = document.querySelector(".time");
+
+      setInterval(() => {
+        const d = new Date();
+
+        let h = addzero(d.getHours());
+
+        let m = addzero(d.getMinutes());
+
+        let s = addzero(d.getSeconds());
+
+        function addzero(i) {
+          if (i < 10) {
+            i = "0" + i;
+          }
+          return i;
+        }
+
+        mite.innerHTML = h + ":" + m + ":" + s;
+      }, 1000);
+    </script>
+  </body>
+</html>
